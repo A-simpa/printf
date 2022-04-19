@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	char dan;
 	int j = 0;
 	char *muj;
-	char *z;
+	char *z, *y;
 
 	if (format)
 	{
@@ -33,11 +33,19 @@ int _printf(const char *format, ...)
 			else if (format[i] && format[i + 1] == 's')
 			{
 				muj = va_arg(ptr, char *);
-				while (muj[j] != '\0')
+				if (muj)
 				{
-					z = &muj[j];
-					num += write(1, z, 1);
-					j++;
+					while (muj[j] != '\0')
+					{
+						z = &muj[j];
+						num += write(1, z, 1);
+						j++;
+					}
+				}
+				else
+				{
+					y = "(null)";
+					num += write(1, y, 6);
 				}
 			}
 			i++;
