@@ -24,13 +24,13 @@ int _printf(const char *format, ...)
 		va_start(ptr, format);
 		while (format[i] != '\0')
 		{
-			if (format[i] == 'c')
+			if (format[i] == '%' && format[i + 1] == 'c')
 			{
 				dan = va_arg(ptr, int);
 				str = &dan;
 				num += write(1, str, 1);
 			}
-			else if (format[i] == 's')
+			else if (format[i] && format[i + 1] == 's')
 			{
 				muj = va_arg(ptr, char *);
 				while (muj[j] != '\0')
