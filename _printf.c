@@ -11,15 +11,13 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int num = 0;
-	int i = 0;
-	char *str;
-	char dan;
-	int j = 0;
-	char *muj;
-	char *z, *y;
+	int num = 0, j = 0, i = 0;
+	char dan, *muj, *z, *y, *str;
 
-	if (format)
+	if (!format)
+		return (-1);
+
+	else
 	{
 		va_start(ptr, format);
 		while (format[i] != '\0')
@@ -35,11 +33,10 @@ int _printf(const char *format, ...)
 				muj = va_arg(ptr, char *);
 				if (muj)
 				{
-					while (muj[j] != '\0')
+					for (; muj[j] != '\0'; j++)
 					{
 						z = &muj[j];
 						num += write(1, z, 1);
-						j++;
 					}
 				}
 				else
