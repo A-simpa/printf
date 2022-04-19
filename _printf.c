@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 /**
-* printf - produces output according to format
+* _printf - produces output according to format
 * @format: first parameter of type char
 * Return: Always 0
 */
@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			{
 				dan = va_arg(ptr, int);
 				str = &dan;
-				num = write(1, str, 1);
+				num += write(1, str, 1);
 			}
 			else if (format[i] == 's')
 			{
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 				while (muj[j] != '\0')
 				{
 					z = &muj[j];
-					num = write(1, z, 1);
+					num += write(1, z, 1);
 					j++;
 				}
 			}
