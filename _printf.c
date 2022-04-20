@@ -26,12 +26,13 @@ int _printf(const char *format, ...)
 				i++;
 				continue;
 			}
-			else if (i != 0 &&  *(format - 1) == '%' && *format != '%')
+			else if (i != 0 &&  *(format - 1) == '%' && *format == 'c')
 			{
-				if (*format == 'c')
-					num += print_c(va_arg(ptr, int));
-				else if (*format == 's')
-					num += print_s(va_arg(ptr, char *));
+				num += print_c(va_arg(ptr, int));
+			}
+			else if (i != 0 && *(format - 1) == '%' && *format == 's')
+			{
+				num += print_s(va_arg(ptr, char *));
 			}
 			else
 			{
