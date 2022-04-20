@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int num = 0, i = 0;
+	int num = 0, i = 0, j, k;
 
 	if (!format)
 		return (-1);
@@ -21,7 +21,9 @@ int _printf(const char *format, ...)
 		va_start(ptr, format);
 		for (; *format != '\0'; format++)
 		{
-			if (*format == '%' && (*(format + 1) == 'c' || *(format + 1) == 's'))
+			j = *format == '%' && *(format -1) != '%';
+			k = *(format + 1) == 'c' || *(format + 1) == 's' || *(format + 1) == '%';
+			if (j && k)
 			{
 				i++;
 				continue;
