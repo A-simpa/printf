@@ -28,8 +28,7 @@ if (s)
 else
 {
 	r = "(null)";
-	write(1, r, 6);
-	num += 1;
+	num += write(1, r, 6);
 }
 return (num);
 }
