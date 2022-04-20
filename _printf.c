@@ -21,12 +21,12 @@ int _printf(const char *format, ...)
 		va_start(ptr, format);
 		for (; *format != '\0'; format++)
 		{
-			if (*format == '%')
+			if (*format == '%' && (*(format + 1) == 'c' || *(format + 1) == 's'))
 			{
 				i++;
 				continue;
 			}
-			else if (i != 0 &&  *(format - 1) == '%')
+			else if (i != 0 &&  *(format - 1) == '%' && *format != '%')
 			{
 				if (*format == 'c')
 					num += print_c(va_arg(ptr, int));
