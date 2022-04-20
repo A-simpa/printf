@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		va_start(ptr, format);
 		for (; *format != '\0'; format++)
 		{
-			if(*format == '%')
+			if (*format == '%')
 			{
 				continue;
 			}

@@ -5,9 +5,9 @@
 
 /**
 *print_s - prints a string
-*@s - a pointer to the string
+*@s: a pointer to the string
 *
-*Return - returns the number of character printed
+*Return: returns the number of character printed
 */
 
 int print_s(char *s)
@@ -18,7 +18,7 @@ char *e, *r;
 
 if (s)
 {
-	while(s[i] != '\0')
+	while (s[i] != '\0')
 	{
 		e = &s[i];
 		num += write(1, e, 1);
