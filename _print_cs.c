@@ -73,6 +73,7 @@ int pr_flag(const char *s)
 /**
  * text_print - implement the actual printing
  * @s: character to check
+ * @ptr: the variadic list to print option
  *
  * Return: int
  */
