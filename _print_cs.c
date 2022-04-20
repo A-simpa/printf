@@ -106,7 +106,7 @@ int text_print(va_list ptr, const char *s)
 		}
 		else if (flag == -1)
 		{
-			num += -1
+			num += -1;
 			continue;
 		}
 		else
