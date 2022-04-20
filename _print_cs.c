@@ -49,3 +49,72 @@ int print_c(char ch)
 	num += write(1, r, 1);
 	return (num);
 }
+
+/**
+ * pr_flag - return a flag to a condition
+ *
+ * @s: the pointer to the string
+ * Return: returns an int
+ */
+
+
+int pr_flag(const char *s)
+{
+	if (*s == '%' && *(s + 1) == '%')
+		return (2);
+	else if (*s == '%' && (*(s + 1) == 'c' || *(s + 1) == 's'))
+		return (1);
+	else if (*s == '%' && *(s + 1) == '\0')
+		return (-1);
+	return (0);
+}
+
+
+/**
+ * text_print - implement the actual printing
+ * @s: character to check
+ *
+ * Return: int
+ */
+
+
+int text_print(va_list ptr, const char *s)
+{
+	int flag, num = 0;
+	char *p = "%";
+
+	for (; *s != '\0'; s++)
+	{
+		flag = pr_flag(s);
+		if (flag == 2)
+		{
+			num += write(1, p, 1);
+			s++;
+		}
+		else if (flag == 1)
+		{
+			if (*(s+1) == 'c')
+			{
+				num += print_c(va_arg(ptr, int));
+			}
+
+			else
+			{
+				num += print_s(va_arg(ptr,char *));
+			}
+			s++;
+		}
+		else if (flag == -1)
+		{
+		continue;
+		}
+		else
+		{
+			num += write(1, s, 1);
+		}
+
+	}
+	return (num);
+}
+
+

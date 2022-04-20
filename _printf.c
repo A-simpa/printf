@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int num = 0, i = 0, j, k;
+	int num = 0;
 
 	if (!format)
 		return (-1);
@@ -19,29 +19,8 @@ int _printf(const char *format, ...)
 	else
 	{
 		va_start(ptr, format);
-		for (; *format != '\0'; format++)
-		{
-			j = *format == '%' && *(format - 1) != '%';
-			k = *(format + 1) == 'c' || *(format + 1) == 's' || *(format + 1) == '%';
-			if (j && k)
-			{
-				i++;
-				continue;
-			}
-			else if (i != 0 &&  *(format - 1) == '%' && *format == 'c')
-			{
-				num += print_c(va_arg(ptr, int));
-			}
-			else if (i != 0 && *(format - 1) == '%' && *format == 's')
-			{
-				num += print_s(va_arg(ptr, char *));
-			}
-			else
-			{
-				num += write(1, format, 1);
-			}
-			i++;
-		}
+
+		num += text_print(ptr, format);
 	}
 	va_end(ptr);
 	return (num);
