@@ -1,4 +1,4 @@
-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#include "main.h"
+#include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
 
@@ -11,8 +11,7 @@ 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#include "main.h"
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int num = 0, j = 0, i = 0;
-	char dan, *muj, *z, *y, *str;
+	int num = 0, i = 0;
 
 	if (!format)
 		return (-1);
@@ -20,30 +19,22 @@ int _printf(const char *format, ...)
 	else
 	{
 		va_start(ptr, format);
-		while (format[i] != '\0')
+		for (; *format != '\0'; format++)
 		{
-			if (format[i] == '%' && format[i + 1] == 'c')
+			if(*format == '%')
 			{
-				dan = va_arg(ptr, int);
-				str = &dan;
-				num += write(1, str, 1);
+				continue;
 			}
-			else if (format[i] && format[i + 1] == 's')
+			else if (i != 0 &&  *(format - 1) == '%')
 			{
-				muj = va_arg(ptr, char *);
-				if (muj)
-				{
-					for (; muj[j] != '\0'; j++)
-					{
-						z = &muj[j];
-						num += write(1, z, 1);
-					}
-				}
-				else
-				{
-					y = "(null)";
-					num += write(1, y, 6);
-				}
+				if (*format == 'c')
+					num += print_c(va_arg(ptr, int));
+				else if (*format == 's')
+					num += print_s(va_arg(ptr, char *));
+			}
+			else
+			{
+				num += write(1, format, 1);
 			}
 			i++;
 		}
