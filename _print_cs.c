@@ -93,14 +93,14 @@ int text_print(va_list ptr, const char *s)
 		}
 		else if (flag == 1)
 		{
-			if (*(s+1) == 'c')
+			if (*(s + 1) == 'c')
 			{
 				num += print_c(va_arg(ptr, int));
 			}
 
 			else
 			{
-				num += print_s(va_arg(ptr,char *));
+				num += print_s(va_arg(ptr, char *));
 			}
 			s++;
 		}
