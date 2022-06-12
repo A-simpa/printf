@@ -12,7 +12,8 @@
 
 int print_in(int n, int flag)
 {
-	int *num, out, count = 0;
+	int *num, out;
+	int count = 0;
 	char *sign = "-";
 
 	if (n < 0)

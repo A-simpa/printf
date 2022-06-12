@@ -98,13 +98,15 @@ int text_print(va_list ptr, const char *s)
 			if (*(s + 1) == 'c')
 				num += print_c(va_arg(ptr, int));
 			else
-				num += print_s(va_arg(ptr, char *)), printf("no");
+				num += print_s(va_arg(ptr, char *));
 			s++;
 		}
 		else if (flag == 4)
-			num += print_in(va_arg(ptr, int), 0), s++;
+			num += print_in(va_arg(ptr, long int), 0), s++;
 		else if (flag == 3)
-			num += print_uin(va_arg(ptr, unsigned int), 0), s++;
+		{
+			num += print_in(va_arg(ptr, int), 0), s++;
+		}
 		else if (flag == -1)
 		{
 			num += -1;
@@ -115,5 +117,3 @@ int text_print(va_list ptr, const char *s)
 	}
 	return (num);
 }
-
-
