@@ -6,6 +6,7 @@
 /**
  *print_in - prints integer
  *@n: the integer to print
+ *@flag: flags when a function have been called
  *
  *Return: the number of character printed
  */
