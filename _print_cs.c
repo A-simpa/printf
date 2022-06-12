@@ -49,6 +49,7 @@ int print_c(char ch)
 	return (num);
 }
 
+
 /**
  * pr_flag - return a flag to a condition
  *
@@ -63,6 +64,10 @@ int pr_flag(const char *s)
 		return (2);
 	else if (*s == '%' && (*(s + 1) == 'c' || *(s + 1) == 's'))
 		return (1);
+	else if (*s == '%' && (*(s + 1)) == 'd')
+		return (4);
+	else if (*s == '%' && (*(s + 1)) == 'i')
+		return (3);
 	else if (*s == '%' && *(s + 1) == '\0')
 		return (-1);
 	return (0);
@@ -87,33 +92,26 @@ int text_print(va_list ptr, const char *s)
 	{
 		flag = pr_flag(s);
 		if (flag == 2)
-		{
-			num += write(1, p, 1);
-			s++;
-		}
+			num += write(1, p, 1), s++;
 		else if (flag == 1)
 		{
 			if (*(s + 1) == 'c')
-			{
 				num += print_c(va_arg(ptr, int));
-			}
-
 			else
-			{
-				num += print_s(va_arg(ptr, char *));
-			}
+				num += print_s(va_arg(ptr, char *)), printf("no");
 			s++;
 		}
+		else if (flag == 4)
+			num += print_in(va_arg(ptr, int)), s++;
+		else if (flag == 3)
+			num += print_uin(va_arg(ptr, unsigned int)), s++;
 		else if (flag == -1)
 		{
 			num += -1;
 			continue;
 		}
 		else
-		{
 			num += write(1, s, 1);
-		}
-
 	}
 	return (num);
 }
