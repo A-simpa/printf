@@ -102,7 +102,7 @@ int text_print(va_list ptr, const char *s)
 			s++;
 		}
 		else if (flag == 4)
-			num += print_in(va_arg(ptr, long int), 0), s++;
+			num += print_in(va_arg(ptr, int), 0), s++;
 		else if (flag == 3)
 		{
 			num += print_in(va_arg(ptr, int), 0), s++;
