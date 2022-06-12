@@ -10,24 +10,29 @@
  *Return: the number of character printed
  */
 
-int print_in(int n)
+int print_in(int n, int flag)
 {
 	int *num, out, count = 0;
 	char *sign = "-";
 
 	if (n < 0)
 	{
+		flag += 1;
 		n = n * -1;
 		count += write(1, sign, 1);
 	}
 	if (n == 0)
-		return (0);
-
+	{
+		if (flag == 0)
+			count = write(1, "0", 1);
+		return (count);
+	}
+	flag += 1;
 	out = (n % 10) + '0';
 	num  = &out;
-	print_in((n / 10));
-	count += write(1, num, 1);
-	return (count);
+	count += print_in((n / 10), flag);
+	write(1, num, 1);
+	return (count + 1);
 }
 
 
@@ -38,18 +43,21 @@ int print_in(int n)
  *Return: the number of character printed
  */
 
-int print_uin(unsigned int u)
+int print_uin(unsigned int u, int flag)
 {
 	unsigned int ut, *num, count = 0;
 
 	if (u == 0)
-		return (0);
-
-
+	{
+		if (flag == 0)
+			count = write(1, "0", 1);
+		return (count);
+	}
+	flag += 1;
 	ut = (u % 10) + '0';
 	num  = &ut;
-	print_uin((u / 10));
-	count += write(1, num, 1);
-	return (count);
+	count += print_uin((u / 10), flag);
+	write(1, num, 1);
+	return (count + 1);
 
 }

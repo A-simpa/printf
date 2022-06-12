@@ -102,9 +102,9 @@ int text_print(va_list ptr, const char *s)
 			s++;
 		}
 		else if (flag == 4)
-			num += print_in(va_arg(ptr, int)), s++;
+			num += print_in(va_arg(ptr, int), 0), s++;
 		else if (flag == 3)
-			num += print_uin(va_arg(ptr, unsigned int)), s++;
+			num += print_uin(va_arg(ptr, unsigned int), 0), s++;
 		else if (flag == -1)
 		{
 			num += -1;

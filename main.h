@@ -7,7 +7,7 @@ int print_s(char *s);
 int print_c(char ch);
 int pr_flag(const char *s);
 int text_print(va_list, const char *s);
-int print_in(int n);
-int print_uin(unsigned int u);
+int print_in(int n, int flag);
+int print_uin(unsigned int u, int flag);
 
 #endif
