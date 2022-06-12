@@ -11,9 +11,9 @@
  *Return: the number of character printed
  */
 
-int print_in(int n, int flag)
+int print_in(long int n, int flag)
 {
-	int *num, out;
+	long int *num, out;
 	int count = 0;
 	char *sign = "-";
 
