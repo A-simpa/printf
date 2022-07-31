@@ -12,4 +12,5 @@ int print_uin(unsigned int u, int flag);
 int bin(unsigned int dec, int flag);
 int heXx(unsigned int dec, int flag, int type);
 int oct(unsigned int dec, int flag);
+int uuint(unsigned int u, int flag);
 #endif

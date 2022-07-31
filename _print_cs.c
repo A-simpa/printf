@@ -64,7 +64,7 @@ int pr_flag(const char *s)
 		return (2);
 	else if (*s == '%' && (*(s + 1) == 'c' || *(s + 1) == 's'))
 		return (1);
-	else if (*s == '%' && (*(s + 1) == 'd' || *(s + 1) == 'u'))
+	else if (*s == '%' && (*(s + 1)) == 'd')
 		return (4);
 	else if (*s == '%' && (*(s + 1)) == 'i')
 		return (3);
@@ -76,6 +76,8 @@ int pr_flag(const char *s)
 		return (7);
 	else if (*s == '%' && (*(s + 1)) == 'x')
 		return (8);
+	else if (*s == '%' && (*(s + 1)) == 'u')
+		return (9);
 	else if (*s == '%' && *(s + 1) == '\0')
 		return (-1);
 	return (0);
@@ -121,6 +123,8 @@ int text_print(va_list ptr, const char *s)
 			num += heXx(va_arg(ptr, int), 0, 0), s++;
 		else if (flag == 8)
 			num += heXx(va_arg(ptr, int), 0, 1), s++;
+		else if (flag == 9)
+			num += uuint(va_arg(ptr, int), 0), s++;
 		else if (flag == -1)
 		{
 			num += -1;

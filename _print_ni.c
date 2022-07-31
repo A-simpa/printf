@@ -91,3 +91,32 @@ int  bin(unsigned int dec, int flag)
 	write(1, &r, 1);
 	return (count + 1);
 }
+
+/**
+ *uuint - the unsigned decimal value
+ *
+ *@u: the integer value to print
+ *@flag: check number of function
+ *Return: the number of character printed
+ */
+
+int uuint(unsigned int u, int  flag)
+{
+	unsigned int r;
+	int count = 0;
+
+	if (u == 0)
+	{
+		if (flag == 0)
+		{
+			count += write(1, "0", 1);
+			return (count);
+		}
+		return (0);
+	}
+	flag = 1;
+	r = (u % 10) + '0';
+	count += uuint(u / 10, flag);
+	write(1, &r, 1);
+	return (count + 1);
+}
