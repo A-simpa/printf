@@ -77,11 +77,12 @@ int  bin(unsigned int dec)
 	int count = 0;
 
 	if (dec == 0)
-		return (count);
+	{
+		return (-1);
+	}
 
 	r = (dec % 2) + '0';
-	bin(dec / 2);
-	count += write(1, &r, 1);
-	return (count);
+	count += bin(dec / 2);
+	write(1, &r, 1);
+	return (count + 1);
 }
-
