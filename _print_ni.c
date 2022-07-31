@@ -41,7 +41,7 @@ int print_in(long int n, int flag)
 /**
  *print_uin - prints unsigned int
  *@u: the unsigned int
- *
+ *@flag: signifies when count is to be intialized
  *Return: the number of character printed
  */
 
@@ -63,3 +63,25 @@ int print_uin(unsigned int u, int flag)
 	return (count + 1);
 
 }
+
+/**
+ * bin - converts decimal numbers to binary
+ *
+ * @dec: the decimal to convert
+ * Return: returns the number of byte printed
+ */
+
+int  bin(unsigned int dec)
+{
+	unsigned int r;
+	int count = 0;
+
+	if (dec == 0)
+		return (count);
+
+	r = (dec % 2) + '0';
+	bin(dec / 2);
+	count += write(1, &r, 1);
+	return (count);
+}
+

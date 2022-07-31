@@ -68,6 +68,8 @@ int pr_flag(const char *s)
 		return (4);
 	else if (*s == '%' && (*(s + 1)) == 'i')
 		return (3);
+	else if (*s == '%' && (*(s + 1)) == 'b')
+		return (5);
 	else if (*s == '%' && *(s + 1) == '\0')
 		return (-1);
 	return (0);
@@ -104,9 +106,9 @@ int text_print(va_list ptr, const char *s)
 		else if (flag == 4)
 			num += print_in(va_arg(ptr, int), 0), s++;
 		else if (flag == 3)
-		{
 			num += print_in(va_arg(ptr, int), 0), s++;
-		}
+		else if (flag == 5)
+			num += bin(va_arg(ptr, int)), s++;
 		else if (flag == -1)
 		{
 			num += -1;
