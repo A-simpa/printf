@@ -66,23 +66,28 @@ int print_uin(unsigned int u, int flag)
 
 /**
  * bin - converts decimal numbers to binary
- *
+ * @flag: tells the number of time the function was called
  * @dec: the decimal to convert
  * Return: returns the number of byte printed
  */
 
-int  bin(unsigned int dec)
+int  bin(unsigned int dec, int flag)
 {
 	unsigned int r;
 	int count = 0;
 
 	if (dec == 0)
 	{
+		if (flag == 0)
+		{
+			count += write(1, "0", 1);
+			return (count);
+		}
 		return (0);
 	}
-
+	flag = 1;
 	r = (dec % 2) + '0';
-	count += bin(dec / 2);
+	count += bin(dec / 2, flag);
 	write(1, &r, 1);
 	return (count + 1);
 }

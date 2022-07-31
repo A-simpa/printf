@@ -108,7 +108,7 @@ int text_print(va_list ptr, const char *s)
 		else if (flag == 3)
 			num += print_in(va_arg(ptr, int), 0), s++;
 		else if (flag == 5)
-			num += bin(va_arg(ptr, int)), s++;
+			num += bin(va_arg(ptr, int), 0), s++;
 		else if (flag == -1)
 		{
 			num += -1;
