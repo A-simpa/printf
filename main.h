@@ -9,5 +9,7 @@ int pr_flag(const char *s);
 int text_print(va_list, const char *s);
 int print_in(long int n, int flag);
 int print_uin(unsigned int u, int flag);
-int  bin(unsigned int dec, int flag);
+int bin(unsigned int dec, int flag);
+int heXx(unsigned int dec, int flag, int type);
+int oct(unsigned int dec, int flag);
 #endif
