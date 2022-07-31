@@ -78,7 +78,7 @@ int  bin(unsigned int dec)
 
 	if (dec == 0)
 	{
-		return (-1);
+		return (0);
 	}
 
 	r = (dec % 2) + '0';

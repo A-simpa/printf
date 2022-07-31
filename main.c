@@ -8,5 +8,5 @@
 
 int main(void)
 {
-    return(_printf("%b\n", 98));
+    return(_printf("%b", 1024));
 }
