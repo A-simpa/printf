@@ -14,14 +14,13 @@ int print_s(char *s)
 {
 
 int i = 0, num = 0;
-char *e, *r;
+char *r;
 
 if (s)
 {
 	while (s[i] != '\0')
 	{
-		e = &s[i];
-		num += write(1, e, 1);
+		num += write(1, &(s[i]), 1);
 		i++;
 	}
 }
@@ -78,6 +77,8 @@ int pr_flag(const char *s)
 		return (8);
 	else if (*s == '%' && (*(s + 1)) == 'u')
 		return (9);
+	else if (*s == '%' && (*(s + 1)) == 'S')
+		return (10);
 	else if (*s == '%' && *(s + 1) == '\0')
 		return (-1);
 	return (0);
@@ -108,8 +109,7 @@ int text_print(va_list ptr, const char *s)
 			if (*(s + 1) == 'c')
 				num += print_c(va_arg(ptr, int));
 			else
-				num += print_s(va_arg(ptr, char *));
-			s++;
+				num += print_s(va_arg(ptr, char *)), s++;
 		}
 		else if (flag == 4)
 			num += print_in(va_arg(ptr, int), 0), s++;
@@ -125,6 +125,8 @@ int text_print(va_list ptr, const char *s)
 			num += heXx(va_arg(ptr, int), 0, 1), s++;
 		else if (flag == 9)
 			num += uuint(va_arg(ptr, int), 0), s++;
+		else if (flag == 10)
+			num += print_S(va_arg(ptr, char *)), s++;
 		else if (flag == -1)
 		{
 			num += -1;
